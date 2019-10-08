@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <canvas id="drawing" width="200" height="200">A drawing of something.</canvas>
+<script type="text/javascript">
+    var drawing = document.getElementById("drawing");
+    if(drawing.getContext){
+        var context = drawing.getContext("2d");
+        //绘制红色矩形
+        context.fillStyle = "#ff0000";
+        context.fillRect(10, 10, 50, 50);
+        //绘制蓝色半透明矩形
+        context.fillStyle = "rgba(0,0,255,.5)";
+        context.fillRect(30, 30, 50, 50);
+
+        //绘制红色描边矩形
+        context.strokeStyle = "#ff0000";
+        context.strokeRect(10, 100, 50, 50);
+        //绘制蓝色半透明描边矩形
+        context.strokeStyle = "rgba(0,0,255,.5)";
+        context.strokeRect(30, 110, 50, 50);
+
+        //两个矩形重叠的地方清除一小个矩形
+        context.clearRect(40,40,10,10);
+    }
+
+</script>
+</body>
+</html>

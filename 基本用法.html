@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas基本用法</title>
+</head>
+<body>
+    <canvas id="drawing" width="200" height="200">A drawing of something.</canvas>
+<script type="text/javascript">
+    var drawing = document.getElementById("drawing");
+
+    //确定浏览器支持<canvas>元素
+    if(drawing.getContext){
+        var context = drawing.getContext("2d");
+        //更多代码
+    }
+
+
+
+    /**
+     * 取得画布中的一副png格式图像代码如下
+     */
+    var drawing = document.getElementById("drawing");
+
+    //确定浏览器支持<canvas>元素
+    if(drawing.getContext){
+        //取得图像数据URI
+        var imgURI = drawing.toDataURL("image/png");
+        //显示图像
+        var image = document.createElement("img");
+        image.src = imgURI;
+        document.body.appendChild(image);
+    }
+</script>
+</body>
+</html>

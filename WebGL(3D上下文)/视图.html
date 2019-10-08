@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视图</title>
+</head>
+<body>
+<canvas id="drawing" width="200" height="200">A drawing of something.</canvas>
+<script type="text/javascript">
+    var drawing = document.getElementById("drawing");
+    //确定浏览器支持<canvas>元素
+    if (drawing.getContext) {
+        try {
+            g1 = drawing.getContext("experimental-webg1");
+        } catch (ex) {
+            //什么也不做
+        }
+        if (g1) {
+            //使用WebGL
+            //使用实色清除<canvas>为绘图做好准备
+            g1.clearColor(0, 0, 0, 1);//black
+            g1.clear(g1.COLOR_BUFFER_BIT);
+
+            //视口
+            g1.viewport(0, 0, drawing.width, drawing.height);
+        } else {
+            alert("WebGL context could not be created.")
+        }
+    }
+</script>
+</body>
+</html>

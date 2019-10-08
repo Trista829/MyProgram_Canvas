@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渐变</title>
+</head>
+<body>
+<canvas id="drawing" width="200" height="200">A drawing of something.</canvas>
+<script type="text/javascript">
+    var drawing = document.getElementById("drawing");
+    if (drawing.getContext) {
+        var context = drawing.getContext("2d");
+
+        //创建渐变
+        var gradient = context.createLinearGradient(30, 30, 70, 70);
+        gradient.addColorStop(0, "white");
+        gradient.addColorStop(1, "black");
+
+        //绘制红色矩形
+        context.fillStyle = "#ff0000";
+        context.fillRect(10, 10, 50, 50);
+
+        //绘制渐变的矩形
+        context.fillStyle = gradient;
+        context.fillRect(30, 30, 50, 50);
+
+        //确保坐标匹配函数
+        function createRectLinearGradient(context,x,y,width,height){
+            return context.createLinearGradient(x, y, width+x, height+y);
+        }
+        var gradient1 = createRectLinearGradient(context,100,100,50,50);
+        gradient1.addColorStop(0, "red");
+        gradient1.addColorStop(1, "yellow");
+        context.fillStyle = gradient1;
+        context.fillRect(100,100,50,50);
+    }
+</script>
+</body>
+</html>
